@@ -9,6 +9,6 @@ import java.util.Date;
 public class HelloController {
     @GetMapping("/api/hello")
     public String hello(){
-        return "김성은 신영한 구현우 Taxi 프로젝트 시작 \n" + new Date() + "";
+        return "김성은 신영한 구현우 Taxi 프로젝트 시작 \n" + new Date();
     }
 }
