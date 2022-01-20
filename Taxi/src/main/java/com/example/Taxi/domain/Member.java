@@ -1,13 +1,22 @@
 package com.example.Taxi.domain;
 
 public class Member {
-    private String memberName;
+    private String id;
+    private int password;
 
-    public String getMemberName() {
-        return memberName;
+    public String getId() {
+        return id;
     }
 
-    public void setMemberName(String memberName) {
-        this.memberName = memberName;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getPassword() {
+        return password;
+    }
+
+    public void setPassword(int password) {
+        this.password = password;
     }
 }

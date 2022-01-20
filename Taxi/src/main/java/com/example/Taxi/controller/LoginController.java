@@ -1,16 +1,18 @@
 package com.example.Taxi.controller;
 
 import com.example.Taxi.domain.Member;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
-@RestController
+@Controller
 public class LoginController {
-    @PostMapping("/start")
-    public String start(Member member){
-        return "redirect:/hello";
+    @ResponseBody
+    @RequestMapping(value = "/start", method = RequestMethod.POST)
+    public String start(@RequestBody Member member){
+        if(member.getPassword() == 1234)
+            return "success";
+        return "fail";
     }
 }
