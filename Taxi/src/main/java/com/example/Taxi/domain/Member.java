@@ -2,7 +2,7 @@ package com.example.Taxi.domain;
 
 public class Member {
     private String id;
-    private int password;
+    private String password;
 
     public String getId() {
         return id;
@@ -12,11 +12,11 @@ public class Member {
         this.id = id;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 }

@@ -13,8 +13,8 @@ public class LoginController {
     @ResponseBody
     @RequestMapping(value = "/start", method = RequestMethod.POST)
     public String start(@RequestBody Member member){
-        log.info(member.getClass().toString());
-        if(member.getPassword() == 1234)
+        log.info(member.getId().getClass().getName());
+        if(member.getPassword().equals("1234"))
             return "success";
         return "fail";
     }
