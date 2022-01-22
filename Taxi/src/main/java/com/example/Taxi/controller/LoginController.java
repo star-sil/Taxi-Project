@@ -14,6 +14,7 @@ public class LoginController {
     @RequestMapping(value = "/start", method = RequestMethod.POST)
     public String start(@RequestBody Member member){
         log.info(member.getId().getClass().getName());
+        log.info(member.getId() + member.getPassword());
         if(member.getPassword().equals("1234"))
             return "success";
         return "fail";
