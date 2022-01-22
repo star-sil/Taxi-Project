@@ -1,0 +1,21 @@
+package com.example.Taxi.controller;
+
+import com.example.Taxi.domain.Member;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
+
+@Slf4j
+@Controller
+public class LoginController {
+    @ResponseBody
+    @RequestMapping(value = "/start", method = RequestMethod.POST)
+    public String start(@RequestBody Member member){
+        log.info(member.getId().getClass().getName());
+        if(member.getPassword().equals("1234"))
+            return "success";
+        return "fail";
+    }
+}
