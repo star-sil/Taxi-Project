@@ -72,13 +72,14 @@ function App () {
 
   return (
     <div className="App">
-      <Routes>
+      <Routes className = "pages" >
         <Route path="/" element={<MainForm/>}/>
-        <Route path="/Map" element={<Mainscreen/>}/>
+        <Route className = "map" path="/Map" element={<Mainscreen/>}/>
         <Route path="/*" element={<PageError/>}/>
       </Routes>
     </div>
   )
+  
 }
 
 export default App;
