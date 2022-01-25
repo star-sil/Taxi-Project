@@ -8,7 +8,7 @@ function MainScreen() {
   return (
     <div className="MainScreen">
 
-      <Navbar bg="light" expand={false}>
+      <Navbar className='menubar' bg="light" expand={false}>
         <Container fluid>
           <Navbar.Brand href="#">Taxi-Share</Navbar.Brand>
           <Navbar.Toggle aria-controls="offcanvasNavbar" />

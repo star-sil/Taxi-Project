@@ -1,15 +1,19 @@
+.MainScreen{
+    width: 100%;
+    height: 80%;
+}
+
+.menubar{
+    width : 100%;
+    height : 10%;
+}
 .buttonGroup{
     width: 100%;
-    height: 60px;
+    height: 10%;
 }
 .choiceTime{
     width:50%;
 }
 .makeRoom{
     width:50%;
-}
-
-.MainScreen{
-    width: 100%;
-    height: 100%;
 }
