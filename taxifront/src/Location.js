@@ -1,5 +1,6 @@
 /*global kakao*/ 
 import React, { useEffect } from 'react'
+import './Location.css';
 
 const Location=()=>{
 
@@ -60,10 +61,7 @@ const Location=()=>{
 
 
     return (
-        <div>
-            <div id="map" style={{width:"100%", height: "500px"}}></div>
-        </div>
-
+        <div id="map"></div>
     )
 }
 
