@@ -1,15 +1,15 @@
 .MainScreen{
     width: 100%;
-    height: 80%;
+    height: 75%;
 }
 
 .menubar{
     width : 100%;
-    height : 10%;
+    height : 60px;
 }
 .buttonGroup{
     width: 100%;
-    height: 10%;
+    height: 60px;
 }
 .choiceTime{
     width:50%;

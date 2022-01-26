@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import mapData from './Location.js';
+import RoomModal from './RoomModal.js';
 import "./MainScreen.css"
 
-import { Navbar, Container, Nav, ButtonGroup, Button, Offcanvas,DropdownButton, Dropdown } from 'react-bootstrap';
+import { Navbar, Container, Nav, ButtonGroup, Button, Offcanvas, DropdownButton, Dropdown} from 'react-bootstrap';
+import { render } from '@testing-library/react';
 
 function MainScreen() {
+  const [modalShow, setModalShow] = React.useState(false);
+
   return (
     <div className="MainScreen">
-
       <Navbar className='menubar' bg="light" expand={false}>
         <Container fluid>
           <Navbar.Brand href="#">Taxi-Share</Navbar.Brand>
@@ -30,11 +33,8 @@ function MainScreen() {
         </Container>
       </Navbar>
 
-      { 
-        mapData()
-      }
+      { mapData() }
       
-
       <ButtonGroup className='buttonGroup' aria-label="Basic example">
         <DropdownButton
           className='choiceTime'
@@ -50,15 +50,24 @@ function MainScreen() {
             {reTime()}
           </div>
         </DropdownButton>
-        <Button className='makeRoom' variant="secondary" size="lg">
+        <Button onClick={()=>setModalShow(true)} className='makeRoom' variant="secondary" size="lg">
           방 만들기
         </Button>
-      </ButtonGroup>
 
-      
+        <RoomModal
+          show = {modalShow}
+          onHide = {() => setModalShow(false)}
+          saveInfo = {
+            () => {setModalShow(false)
+            }
+          }
+        />
+      </ButtonGroup>
     </div>
   );
 }
+
+render(<MainScreen />)
 
 function Time_Line(porps){
   return(
