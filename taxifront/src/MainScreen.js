@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import mapData from './Location.js';
-import RoomModal from './RoomModal.js';
+import React, { useState, useRef } from 'react'
+import mapData from './Location';
+import RoomModal from './RoomModal';
 import "./MainScreen.css"
 
 import { Navbar, Container, Nav, ButtonGroup, Button, Offcanvas, DropdownButton, Dropdown} from 'react-bootstrap';
@@ -8,9 +8,26 @@ import { render } from '@testing-library/react';
 
 function MainScreen() {
   const [modalShow, setModalShow] = React.useState(false);
+  const [Des, sDes] = useState('');
+  const [Hour, sHour] = useState(0);
+  const [Min, sMin] = useState(0);
+  const [Lat, setLat] = useState(0);
+  const [Lng, setLng] = useState(0);
+
+  function DHPCallback(inputDes, inputHour, inputMin){
+    sDes(inputDes);
+    sHour(inputHour);
+    sMin(inputMin);
+  }
+
+  function LocCallback(saveLat, saveLng){
+    setLat(saveLat);
+    setLng(saveLng);
+  }
 
   return (
     <div className="MainScreen">
+
       <Navbar className='menubar' bg="light" expand={false}>
         <Container fluid>
           <Navbar.Brand href="#">Taxi-Share</Navbar.Brand>
@@ -33,8 +50,10 @@ function MainScreen() {
         </Container>
       </Navbar>
 
-      { mapData() }
-      
+      <div id = 'map'>
+        { mapData() }
+      </div>
+       
       <ButtonGroup className='buttonGroup' aria-label="Basic example">
         <DropdownButton
           className='choiceTime'
@@ -45,7 +64,7 @@ function MainScreen() {
           variant="secondary"
           title={` 시간대 선택 `}
         >
-          <div style = {{height: '400px', overflow: "auto", textAlign: "center"}}>
+          <div style = {{height: '300px', overflow: "auto", textAlign: "center"}}>
             <Dropdown.Item eventKey="-1">전 체</Dropdown.Item>
             {reTime()}
           </div>
@@ -53,16 +72,23 @@ function MainScreen() {
         <Button onClick={()=>setModalShow(true)} className='makeRoom' variant="secondary" size="lg">
           방 만들기
         </Button>
+      </ButtonGroup>
 
-        <RoomModal
+      <RoomModal
+          parentCallback = {DHPCallback}
           show = {modalShow}
           onHide = {() => setModalShow(false)}
           saveInfo = {
-            () => {setModalShow(false)
+            Hour > 23 || Hour < 0 || Min > 59 || Min < 0
+            ? () => true
+            : () => {setModalShow(false);
             }
           }
-        />
-      </ButtonGroup>
+      />
+      <mapData
+        preentLocCallback = {LocCallback}
+      />
+      
     </div>
   );
 }
